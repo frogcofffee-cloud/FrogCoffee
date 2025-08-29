@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frog Coffee - 168 Nguyễn Công Trứ, TPHCM</title>
+    <style>
+        :root {
+            --light-green: #E8F5E9;
+            --fresh-green: #C8E6C9;
+            --vibrant-green: #81C784;
+            --dark-green: #4CAF50;
+            --white: #FFFFFF;
+            --black: #333333;
+            --gray: #757575;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .top-bar {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .top-bar-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+        
+        .top-bar-links a:hover {
+            color: var(--fresh-green);
+        }
+        
+        /* Main Header */
+        .main-header {
+            padding: 20px 0;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+        
+        .logo-tagline {
+            font-size: 12px;
+            color: var(--vibrant-green);
+            margin-top: 3px;
+            font-style: italic;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .main-nav li {
+            margin-left: 30px;
+        }
+        
+        .main-nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .main-nav a:hover {
+            color: var(--vibrant-green);
+        }
+        
+        .main-nav a.active {
+            color: var(--dark-green);
+            font-weight: 600;
+        }
+        
+        .main-nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--vibrant-green);
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            position: relative;
+            height: 500px;
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            color: var(--white);
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--vibrant-green);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Menu Section */
+        .menu-section {
+            padding: 80px 0;
+            background-color: var(--light-green);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--vibrant-green);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .menu-columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .menu-column {
+            flex: 0 0 calc(33.333% - 20px);
+            margin-bottom: 40px;
+        }
+        
+        .menu-category {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .menu-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--fresh-green);
+        }
+        
+        .menu-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--dark-green);
+            margin-bottom: 5px;
+        }
+        
+        .item-price {
+            color: var(--vibrant-green);
+            font-weight: bold;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .about-image {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 5px solid var(--white);
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 32px;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .about-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--vibrant-green);
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--black);
+        }
+        
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--fresh-green);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--fresh-green);
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--fresh-green);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+            color: var(--white);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--vibrant-green);
+            transform: translateY(-3px);
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .menu-column {
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .menu-section, .about-section {
+                padding: 50px 0;
+            }
+            
+            .menu-column {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-text">
+                <i class="fas fa-map-marker-alt"></i> 168 Nguyễn Công Trứ, Q.1, TP.HCM
+            </div>
+            <div class="top-bar-links">
+                <a href="#"><i class="fas fa-phone-alt"></i> 076 520 1630</a>
+                <a href="#"><i class="fas fa-user"></i> Đăng nhập</a>
+                <a href="#"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/50x50/4CAF50/FFFFFF?text=F" alt="Frog Coffee Logo" class="logo-img">
+                <div>
+                    <div class="logo-text">FROG COFFEE</div>
+                    <div class="logo-tagline">Éch Xanh Đồng Hành Cùng Bạn</div>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Trang chủ</a></li>
+                    <li><a href="#menu">Thực đơn</a></li>
+                    <li><a href="#">Dịch vụ</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>Thưởng thức hương vị cà phê đích thực</h1>
+            <p>Robusta Honey & Arabica chính hãng - Pha chế độc quyền</p>
+            <a href="#menu" class="btn">Xem thực đơn</a>
+        </div>
+    </section>
+    
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="section-title">
+            <h2>Thực đơn Frog Coffee</h2>
+            <p>Những thức uống làm say lòng người Sài Gòn</p>
+        </div>
+        
+        <div class="menu-columns">
+            <!-- Column 1 -->
+            <div class="menu-column">
+                <div class="menu-category">
+                    <div class="menu-item">
+                        <div class="item-name">CAFE DEN</div>
+                        <div class="item-price">29.000đ - 18.000đ</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">CAFE SỮA</div>
+                        <div class="item-price">22.000đ - 20.000đ</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">TRÀ XANH KEM MUỐI</div>
+                        <div class="item-price">25.000đ</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Column 2 -->
+            <div class="menu-column">
+                <div class="menu-category">
+                    <div class="menu-item">
+                        <div class="item-name">CAFE MUỐI</div>
+                        <div class="item-price">25.000đ</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">BAC XIU</div>
+                        <div class="item-price">25.000đ</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">TRÀ XANH LATTE</div>
+                        <div class="item-price">20.000đ</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Column 3 -->
+            <div class="menu-column">
+                <div class="menu-category">
+                    <div class="menu-item">
+                        <div class="item-name">CAFE SỮA TƯƠI</div>
+                        <div class="item-price">25.000đ</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">CAFE SỮA TƯƠI THÁI XANH</div>
+                        <div class="item-price">25.000đ</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-name">TRÀ LIPTON THẢO MỘC</div>
+                        <div class="item-price">22.000đ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Frog Coffee">
+            </div>
+            <div class="about-content">
+                <h2>Về Frog Coffee</h2>
+                <p>Frog Coffee tự hào là điểm đến của những tín đồ cà phê đích thực. Chúng tôi chọn lọc những hạt Robusta Honey và Arabica chất lượng nhất, kết hợp với phương pháp pha chế độc đáo mang đến hương vị khó quên.</p>
+                <p>Với không gian xanh mát cùng phong cách phục vụ chuyên nghiệp, chúng tôi mong muốn mang đến cho khách hàng những trải nghiệm thú vị về văn hóa cà phê Việt.</p>
+                <a href="#" class="btn">Khám phá thêm</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Frog Coffee</h3>
+                <p>Éch Xanh Đồng Hành Cùng Bạn</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 168 Nguyễn Công Trứ, Q.1, TP.HCM</p>
+                    <p><i class="fas fa-phone-alt"></i> 076 520 1630</p>
+                    <p><i class="fas fa-envelope"></i> frogcoffee@example.com</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Giờ mở cửa</h3>
+                <ul>
+                    <li>Thứ 2 - Thứ 6: 7:00 - 22:00</li>
+                    <li>Thứ 7 - CN: 8:00 - 23:00</li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liên kết nhanh</h3>
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#menu">Thực đơn</a></li>
+                    <li><a href="#">Đặt bàn</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Frog Coffee. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
